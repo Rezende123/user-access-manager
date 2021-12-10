@@ -12,7 +12,7 @@ export class CountapiService {
 
   hits() {
     return axios
-      .get(`${this.url}/hit/${this.namespace}/${this.key}`)
+      .get(`${this.url}/get/${this.namespace}/${this.key}`)
       .then(this.extractData)
       .then((data) => new HitAdapter(data));
   }
