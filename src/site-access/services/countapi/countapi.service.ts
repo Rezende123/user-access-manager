@@ -16,4 +16,11 @@ export class CountapiService {
       .then(this.extractData)
       .then((data) => new HitAdapter(data));
   }
+
+  hit() {
+    return axios
+      .get(`${this.url}/hit/${this.namespace}/${this.key}`)
+      .then(this.extractData)
+      .then((data) => new HitAdapter(data));
+  }
 }

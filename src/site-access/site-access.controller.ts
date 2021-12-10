@@ -9,4 +9,9 @@ export class SiteAccessController {
   amount() {
     return this.countApi.hits();
   }
+
+  @Get('up')
+  increase() {
+    return this.countApi.hit();
+  }
 }
