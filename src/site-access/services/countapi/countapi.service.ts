@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
+import { HitAdapter } from 'src/site-access/adapters/hit.adapter';
 
 @Injectable()
 export class CountapiService {
@@ -12,6 +13,7 @@ export class CountapiService {
   hits() {
     return axios
       .get(`${this.url}/hit/${this.namespace}/${this.key}`)
-      .then(this.extractData);
+      .then(this.extractData)
+      .then((data) => new HitAdapter(data));
   }
 }
