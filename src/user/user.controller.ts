@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { ApiBody } from '@nestjs/swagger';
 import { UserReturnAdapter } from './adapters/user-return.adapter';
 import { QueryUserInterface } from './models/query-user.model';
 import { UserInterface } from './models/user.model';
@@ -8,6 +9,7 @@ import { UserService } from './services/user.service';
 export class UserController {
   constructor(private service: UserService) {}
 
+  @ApiBody({ type: UserInterface })
   @Post()
   create(
     @Body()
