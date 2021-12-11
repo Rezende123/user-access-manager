@@ -2,6 +2,10 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import * as mongoose from 'mongoose';
 
+/**
+ * @interface UserInterface
+ * @description Define o objeto recebido pela api na criação do usuário
+ */
 export interface UserInterface {
   _id?: string;
   username: string;
@@ -12,6 +16,10 @@ export interface UserInterface {
 
 export type UserDocument = User & Document;
 
+/**
+ * @class User
+ * @description Modela o usuário a ser salvo no banco de dados MongoDB
+ */
 @Schema()
 export class User {
   @Prop({ type: mongoose.Schema.Types.ObjectId })

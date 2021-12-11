@@ -6,15 +6,28 @@ import { User, UserDocument, UserInterface } from '../models/user.model';
 import * as bcrypt from 'bcrypt';
 import { QueryUserInterface } from '../models/query-user.model';
 
+/**
+ * @class UserService
+ * @description Interage com o banco de dados a fim de salvar e buscar as informações do usuário
+ */
 @Injectable()
 export class UserService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
+  /**
+   * @method encriptPassword
+   * @description Criptografa a senha definida pelo usuário para que possa ser salva no banco de dados
+   */
   private async encriptPassword(userData: UserInterface): Promise<void> {
     const rounds = Number(process.env.HASH_ROUNDS);
     userData.password = await bcrypt.hash(userData.password, rounds);
   }
 
+  /**
+   * @method create
+   * @description Salva as informações do usuário no banco de dados
+   * @returns O documento do usuário salvo
+   */
   async create(userData: UserInterface): Promise<UserReturnAdapter> {
     await this.encriptPassword(userData);
 
@@ -24,12 +37,22 @@ export class UserService {
     return new UserReturnAdapter(createdUser);
   }
 
+  /**
+   * @method getById
+   * @description Busca as informações do usário por id
+   * @returns O documento do usuário salvo
+   */
   async getById(id: string): Promise<UserReturnAdapter> {
     const user = await this.userModel.findById(id);
 
     return new UserReturnAdapter(user);
   }
 
+  /**
+   * @method getOne
+   * @description Busca as informações do usário por uma query definida no parâmetro da requisição
+   * @returns O documento do usuário salvo
+   */
   async getOne(where: QueryUserInterface): Promise<UserReturnAdapter> {
     const user = await this.userModel.findOne(where);
 

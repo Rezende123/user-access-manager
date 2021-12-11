@@ -1,7 +1,11 @@
 import { UserInterface } from '../models/user.model';
 
+/**
+ * @class UserReturnAdapter
+ * @description Retorna ao usuário apenas os campos que podem ser considerados públicos
+ */
 export class UserReturnAdapter {
-  id?: string;
+  id: string;
   username: string;
   name: string;
   email: string;
