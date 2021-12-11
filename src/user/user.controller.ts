@@ -1,10 +1,11 @@
 import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
-import { ApiBody } from '@nestjs/swagger';
+import { ApiBody, ApiTags } from '@nestjs/swagger';
 import { UserReturnAdapter } from './adapters/user-return.adapter';
 import { QueryUserDto } from './dto/query-user.dto';
 import { UserInterface } from './models/user.model';
 import { UserService } from './services/user.service';
 
+@ApiTags('Usuário')
 @Controller('user')
 export class UserController {
   constructor(private service: UserService) {}
