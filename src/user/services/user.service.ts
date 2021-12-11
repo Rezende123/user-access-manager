@@ -22,4 +22,10 @@ export class UserService {
 
     return new UserReturnAdapter(user);
   }
+
+  async getById(id: string) {
+    const user = await this.userModel.findById(id);
+
+    return new UserReturnAdapter(user);
+  }
 }
