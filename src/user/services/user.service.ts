@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { UserReturnAdapter } from '../adapters/user-return.adapter';
 import { User, UserDocument, UserInterface } from '../models/user.model';
 import * as bcrypt from 'bcrypt';
+import { QueryUserInterface } from '../models/query-user.model';
 
 @Injectable()
 export class UserService {
@@ -25,6 +26,12 @@ export class UserService {
 
   async getById(id: string) {
     const user = await this.userModel.findById(id);
+
+    return new UserReturnAdapter(user);
+  }
+
+  async getOne(where: QueryUserInterface) {
+    const user = await this.userModel.findOne(where);
 
     return new UserReturnAdapter(user);
   }

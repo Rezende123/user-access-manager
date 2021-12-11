@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { QueryUserInterface } from './models/query-user.model';
 import { UserInterface } from './models/user.model';
 import { UserService } from './services/user.service';
 
@@ -18,5 +19,12 @@ export class UserController {
     id: string,
   ) {
     return this.service.getById(id);
+  }
+  @Get()
+  getOne(
+    @Query()
+    query: QueryUserInterface,
+  ) {
+    return this.service.getOne(query);
   }
 }
