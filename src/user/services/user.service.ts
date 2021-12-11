@@ -10,12 +10,12 @@ import { QueryUserInterface } from '../models/query-user.model';
 export class UserService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
-  private async encriptPassword(userData: UserInterface) {
+  private async encriptPassword(userData: UserInterface): Promise<void> {
     const rounds = Number(process.env.HASH_ROUNDS);
     userData.password = await bcrypt.hash(userData.password, rounds);
   }
 
-  async create(userData: UserInterface) {
+  async create(userData: UserInterface): Promise<UserReturnAdapter> {
     await this.encriptPassword(userData);
 
     const createdUser = new this.userModel(userData);
@@ -24,13 +24,13 @@ export class UserService {
     return new UserReturnAdapter(user);
   }
 
-  async getById(id: string) {
+  async getById(id: string): Promise<UserReturnAdapter> {
     const user = await this.userModel.findById(id);
 
     return new UserReturnAdapter(user);
   }
 
-  async getOne(where: QueryUserInterface) {
+  async getOne(where: QueryUserInterface): Promise<UserReturnAdapter> {
     const user = await this.userModel.findOne(where);
 
     return new UserReturnAdapter(user);

@@ -10,14 +10,14 @@ export class CountapiService {
 
   private extractData = (res) => res.data;
 
-  hits() {
+  hits(): Promise<HitAdapter> {
     return axios
       .get(`${this.url}/get/${this.namespace}/${this.key}`)
       .then(this.extractData)
       .then((data) => new HitAdapter(data));
   }
 
-  hit() {
+  hit(): Promise<HitAdapter> {
     return axios
       .get(`${this.url}/hit/${this.namespace}/${this.key}`)
       .then(this.extractData)
