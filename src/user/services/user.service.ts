@@ -4,7 +4,7 @@ import { Model } from 'mongoose';
 import { UserReturnAdapter } from '../adapters/user-return.adapter';
 import { User, UserDocument, UserInterface } from '../models/user.model';
 import * as bcrypt from 'bcrypt';
-import { QueryUserInterface } from '../models/query-user.model';
+import { QueryUserDto } from '../dto/query-user.dto';
 
 /**
  * @class UserService
@@ -53,7 +53,7 @@ export class UserService {
    * @description Busca as informações do usário por uma query definida no parâmetro da requisição
    * @returns O documento do usuário salvo
    */
-  async getOne(where: QueryUserInterface): Promise<UserReturnAdapter> {
+  async getOne(where: QueryUserDto): Promise<UserReturnAdapter> {
     const user = await this.userModel.findOne(where);
 
     return new UserReturnAdapter(user);

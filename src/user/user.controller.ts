@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { ApiBody } from '@nestjs/swagger';
 import { UserReturnAdapter } from './adapters/user-return.adapter';
-import { QueryUserInterface } from './models/query-user.model';
+import { QueryUserDto } from './dto/query-user.dto';
 import { UserInterface } from './models/user.model';
 import { UserService } from './services/user.service';
 
@@ -29,7 +29,7 @@ export class UserController {
   @Get()
   getOne(
     @Query()
-    query: QueryUserInterface,
+    query: QueryUserDto,
   ): Promise<UserReturnAdapter> {
     return this.service.getOne(query);
   }
