@@ -1,38 +1,42 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Descrição do Projeto
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+API que cuida do cadastro de usuários e da quantidade de acessos ao sistema. Conecta-se a um banco de dados [Mongo DB](https://www.mongodb.com/) para salvar e acessar os dados dos usuários e utiliza a [CountAPI](https://countapi.xyz/) para fazer a contagem dos acessos do site.
 
-## Description
+## 📝 Descrevendo Solução
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Aplicação desenvolvida com o framework NestJS, por facilitar a implementação da **Clean Architecture** através do Typescript e dos diversos recursos estruturais do framewor. Arquitetura que foi escolhida por ser testável e pela independência das camadas de software, o que reduz os custos de manutenção.
 
-## Installation
+A escrita do código seguiu os conceitos de **Clean Code** aplicados ao Typescript, ainda assim grande parte das classes e métodos estão documentadas no código, para que a leitura e o entendimento se tornem mais práticos.
+
+## 🚀 Instalando o projeto
 
 ```bash
+$ git clone https://github.com/Rezende123/user-access-manager.git
+$ cd user-access-manager
 $ npm install
 ```
 
-## Running the app
+## :earth_americas: Configuração de Ambientes
+
+O projeto foi desenvolvido na versão `14.17.5` do node, para chegar nela é possível excecutar o seguinte comando:
+
+```bash
+$ n 14.17.5
+```
+
+Os ambientes de acesso do aplicativo estão definidos na pasta ENVIRONMENTS.
+
+* .env.dev => Variáveis para conexão com ambiente de desenvolvimento.
+* .env.prod => Variáveis para conexão com ambiente de produção.
+
+Para selecionar o ambiente a ser utilizado, deve ser utilizado o comando que se refere ao nome do ambiente (dev, prod), flexionando apenas a última palavra do comando:
+
+```bash
+$ npm run env:dev
+```
+
+## ☕ Usando o projeto
 
 ```bash
 # development
@@ -44,30 +48,8 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+O aplicativo rodará localmente em `http://localhost:3000`
 
-## Test
+## Swagger
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+**Ao rodar o aplicativo**, um swagger detalhando o uso dos endpoints da API estará disponível em `http://localhost:3000/api`
