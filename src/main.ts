@@ -18,6 +18,7 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
 
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
+  app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setViewEngine('hbs');
 
   await app.listen(process.env.PORT || 3000);
