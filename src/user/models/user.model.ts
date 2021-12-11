@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 import * as mongoose from 'mongoose';
 
 export interface UserInterface {
-  id?: string;
+  _id?: string;
   username: string;
   password: string;
   name: string;
