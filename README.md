@@ -5,7 +5,7 @@ API que cuida do cadastro de usuários e da quantidade de acessos ao sistema. Co
 
 ## 📝 Descrevendo Solução
 
-Aplicação desenvolvida com o framework NestJS, por facilitar a implementação da **Clean Architecture** através do Typescript e dos diversos recursos estruturais do framewor. Arquitetura que foi escolhida por ser testável e pela independência das camadas de software, o que reduz os custos de manutenção.
+Aplicação desenvolvida com o framework [NestJS](https://nestjs.com/), por facilitar a implementação da **Clean Architecture** através do Typescript e dos diversos recursos estruturais do framewor. Arquitetura que foi escolhida por ser testável e pela independência das camadas de software, o que reduz os custos de manutenção.
 
 A escrita do código seguiu os conceitos de **Clean Code** aplicados ao Typescript, ainda assim grande parte das classes e métodos estão documentadas no código, para que a leitura e o entendimento se tornem mais práticos.
 
@@ -52,4 +52,4 @@ O aplicativo rodará localmente em `http://localhost:3000`
 
 ## Swagger
 
-**Ao rodar o aplicativo**, um swagger detalhando o uso dos endpoints da API estará disponível em `http://localhost:3000/api`
+**Ao rodar o aplicativo**, um swagger desenvolvido através do próprio NestJS que disponibiliza um [módulo](https://docs.nestjs.com/openapi/introduction) que usa a OpenApi para gerar o swagger, estará disponível em `http://localhost:3000/api`
