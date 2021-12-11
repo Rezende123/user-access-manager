@@ -18,10 +18,10 @@ export class UserService {
   async create(userData: UserInterface): Promise<UserReturnAdapter> {
     await this.encriptPassword(userData);
 
-    const createdUser = new this.userModel(userData);
-    const user = await createdUser.save();
+    const UserModelData = new this.userModel(userData);
+    const createdUser = await UserModelData.save();
 
-    return new UserReturnAdapter(user);
+    return new UserReturnAdapter(createdUser);
   }
 
   async getById(id: string): Promise<UserReturnAdapter> {

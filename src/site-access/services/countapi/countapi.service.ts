@@ -8,7 +8,7 @@ export class CountapiService {
   private namespace = process.env.COUNT_API_NAMESPACE;
   private key = process.env.COUNT_API_KEY;
 
-  private extractData = (res) => res.data;
+  private extractData = (response) => response.data;
 
   hits(): Promise<HitAdapter> {
     return axios

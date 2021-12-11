@@ -7,6 +7,7 @@ import { UserService } from './services/user.service';
 @Controller('user')
 export class UserController {
   constructor(private service: UserService) {}
+
   @Post()
   create(
     @Body()
@@ -14,6 +15,7 @@ export class UserController {
   ): Promise<UserReturnAdapter> {
     return this.service.create(userData);
   }
+
   @Get(':id')
   getById(
     @Param('id')
@@ -21,6 +23,7 @@ export class UserController {
   ): Promise<UserReturnAdapter> {
     return this.service.getById(id);
   }
+
   @Get()
   getOne(
     @Query()
