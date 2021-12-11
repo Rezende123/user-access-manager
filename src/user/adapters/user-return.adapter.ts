@@ -1,4 +1,4 @@
-import { UserInterface } from '../models/user.model';
+import { UserDto } from '../dto/user.dto';
 
 /**
  * @class UserReturnAdapter
@@ -10,7 +10,7 @@ export class UserReturnAdapter {
   name: string;
   email: string;
 
-  constructor(user: UserInterface) {
+  constructor(user: UserDto) {
     this.id = user._id;
     this.name = user.name;
     this.email = user.email;
