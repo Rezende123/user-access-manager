@@ -48,8 +48,14 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
-O aplicativo rodará localmente em `http://localhost:3000`
+O aplicativo rodará localmente em http://localhost:3000.
 
-## Swagger
+## :green_book: Swagger
 
-**Ao rodar o aplicativo**, um swagger desenvolvido através do próprio NestJS que disponibiliza um [módulo](https://docs.nestjs.com/openapi/introduction) que usa a OpenApi para gerar o swagger, estará disponível em `http://localhost:3000/api`
+**Ao rodar o aplicativo**, um swagger desenvolvido através do próprio NestJS que disponibiliza um [módulo](https://docs.nestjs.com/openapi/introduction) que usa a OpenApi para gerar o swagger, estará disponível em http://localhost:3000/api.
+
+## :cloud: Deploy
+
+O deploy foi feito utilizando a plataforma [Heroku](https://dashboard.heroku.com/), por ser uma plataforma gratuita.
+
+A api está disponível em https://user-access-manager.herokuapp.com, desta forma o **swagger** pode ser acessado em https://user-access-manager.herokuapp.com/api.
