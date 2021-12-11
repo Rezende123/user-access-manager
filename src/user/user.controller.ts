@@ -2,7 +2,7 @@ import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 import { UserReturnAdapter } from './adapters/user-return.adapter';
 import { QueryUserDto } from './dto/query-user.dto';
-import { UserInterface } from './models/user.model';
+import { UserDto } from './dto/user.dto';
 import { UserService } from './services/user.service';
 
 @ApiTags('Usuário')
@@ -10,11 +10,11 @@ import { UserService } from './services/user.service';
 export class UserController {
   constructor(private service: UserService) {}
 
-  @ApiBody({ type: UserInterface })
+  @ApiBody({ type: UserDto })
   @Post()
   create(
     @Body()
-    userData: UserInterface,
+    userData: UserDto,
   ): Promise<UserReturnAdapter> {
     return this.service.create(userData);
   }

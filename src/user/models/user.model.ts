@@ -1,29 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import * as mongoose from 'mongoose';
-import { ApiProperty } from '@nestjs/swagger';
-
-/**
- * @class UserInterface
- * @description Define o objeto recebido pela api na criação do usuário
- */
-export class UserInterface {
-  _id?: string;
-
-  @ApiProperty({ type: String })
-  username: string;
-
-  @ApiProperty({ type: String })
-  password: string;
-
-  @ApiProperty({ type: String })
-  name: string;
-
-  @ApiProperty({ type: String })
-  email: string;
-}
-
-export type UserDocument = User & Document;
 
 /**
  * @class User
@@ -46,5 +23,7 @@ export class User {
   @Prop({ required: true })
   email: string;
 }
+
+export type UserDocument = User & Document;
 
 export const UserSchema = SchemaFactory.createForClass(User);
