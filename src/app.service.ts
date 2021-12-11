@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common';
 export class AppService {
   date = new Date();
 
-  getHello(): string {
-    return `A API está funcionando! Desde ${this.date.toString()}`;
+  getAppStatus(): any {
+    return { message: `A API está funcionando! Desde ${this.date.toString()}` };
   }
 }
