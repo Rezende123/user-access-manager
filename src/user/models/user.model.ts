@@ -4,7 +4,7 @@ import * as mongoose from 'mongoose';
 import { ApiProperty } from '@nestjs/swagger';
 
 /**
- * @interface UserInterface
+ * @class UserInterface
  * @description Define o objeto recebido pela api na criação do usuário
  */
 export class UserInterface {
