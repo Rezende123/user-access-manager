@@ -7,7 +7,9 @@ API que cuida do cadastro de usuários e da quantidade de acessos ao sistema. Co
 
 Aplicação desenvolvida com o framework [NestJS](https://nestjs.com/), por facilitar a implementação da **Clean Architecture** através do Typescript e dos diversos recursos estruturais do framewor. Arquitetura que foi escolhida por ser testável e pela independência das camadas de software, o que reduz os custos de manutenção.
 
-A escrita do código seguiu os conceitos de **Clean Code** aplicados ao Typescript, ainda assim grande parte das classes e métodos estão documentadas no código, para que a leitura e o entendimento se tornem mais práticos.
+A escrita do código seguiu os conceitos de **Clean Code** aplicados ao Typescript, ainda assim grande parte das classes e métodos estão documentadas no código, para que a leitura e o entendimento se tornem mais práticos. O [eslint](https://eslint.org/) e o [prettier](https://prettier.io/) também foram ultilizados para que seja mantido um padrão de escrita na aplicação.
+
+Foram implementados os testes unitários dos controllers e dos serviços usando a ferramenta [Jest](https://jestjs.io/pt-BR/).
 
 ## 🚀 Instalando o projeto
 
@@ -51,8 +53,6 @@ $ npm run start:prod
 O aplicativo rodará localmente em http://localhost:3000.
 
 ## :clipboard: Teste automático
-
-O teste automático foi implementado através do teste unitário dos controllers e dos serviços, usando a ferramenta [Jest](https://jestjs.io/pt-BR/), para executar basta:
 
 ```bash
 # Teste geral
