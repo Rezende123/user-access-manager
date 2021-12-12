@@ -11,7 +11,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\"",
     "env:dev": "cp ./environment/.env.dev ./.env",
     "env:prod": "cp ./environment/.env.prod ./.env",
     "start": "nest start",
