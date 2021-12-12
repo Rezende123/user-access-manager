@@ -39,16 +39,31 @@ $ npm run env:dev
 ## ☕ Usando o projeto
 
 ```bash
-# development
+# Desenvolvimento
 $ npm run start
 
-# watch mode
+# Modo observação
 $ npm run start:dev
 
-# production mode
+# Modo produção
 $ npm run start:prod
 ```
 O aplicativo rodará localmente em http://localhost:3000.
+
+## :clipboard: Teste automático
+
+O teste automático foi implementado através do teste unitário dos controllers e dos serviços, usando a ferramenta [Jest](https://jestjs.io/pt-BR/), para executar basta:
+
+```bash
+# Teste geral
+$ npm run test
+
+# Modo observação
+$ npm run test:watch
+
+# Verifica a cobertura do teste no código
+$ npm run test:cov
+```
 
 ## :green_book: Swagger
 
