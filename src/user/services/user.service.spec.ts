@@ -1,6 +1,5 @@
 import { getModelToken } from '@nestjs/mongoose';
 import { Test, TestingModule } from '@nestjs/testing';
-import { Model } from 'mongoose';
 import { UserReturnAdapter } from '../adapters/user-return.adapter';
 import { UserDto } from '../dto/user.dto';
 import { User } from '../models/user.model';
