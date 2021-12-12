@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
-import { HitAdapter } from 'src/site-access/adapters/hit.adapter';
+import { HitAdapter } from '../../adapters/hit.adapter';
 
 /**
  * @class CountapiService
