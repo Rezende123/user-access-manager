@@ -52,7 +52,7 @@ $ npm run start:prod
 ```
 O aplicativo rodará localmente em http://localhost:3000.
 
-## :clipboard: Teste automático
+## :clipboard: Teste automatizado
 
 ```bash
 # Teste geral
