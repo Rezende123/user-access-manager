@@ -84,4 +84,6 @@ A Arquitetura Serverless foi implementada utilizando a própria ferramenta [serv
 $ npm run start:serverless
 ```
 
-Neste caso a api vai rodar em http://localhost:3000/dev e o swagger estará disponível em http://localhost:3000/dev/api
+Neste caso a api vai rodar em http://localhost:3000/dev e o swagger estará disponível em http://localhost:3000/dev/api.
+
+**Obs.:** A execução das requisições a partir do swagger em modo desenvolvimento através do serverless retornarão erro, pois a openapi vai entender a url como http://localhost:3000 e não http://localhost:3000/dev, como deveria ser.
