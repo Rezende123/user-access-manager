@@ -49,9 +49,17 @@ export class UserService {
     await this.encriptPassword(userData);
 
     const UserModelData = new this.userModel(userData);
-    const createdUser = await UserModelData.save();
 
-    return new UserReturnAdapter(createdUser);
+    try {
+      const createdUser = await UserModelData.save();
+
+      return new UserReturnAdapter(createdUser);
+    } catch (error) {
+      throw new HttpException(
+        'Não foi possível salvar o cadastro',
+        HttpStatus.SERVICE_UNAVAILABLE,
+      );
+    }
   }
 
   /**
