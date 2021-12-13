@@ -74,3 +74,14 @@ $ npm run test:cov
 O deploy foi feito utilizando a plataforma [Heroku](https://dashboard.heroku.com/), por ser uma plataforma gratuita.
 
 A api está disponível em https://user-access-manager.herokuapp.com, desta forma o **swagger** pode ser acessado em https://user-access-manager.herokuapp.com/api.
+
+
+## :heavy_minus_sign: Serverless
+
+A Arquitetura Serverless foi implementada utilizando a própria ferramenta [serverless](https://www.serverless.com/). Para execução em desenvolvimento basta:
+
+```bash
+$ npm run start:serverless
+```
+
+Neste caso a api vai rodar em http://localhost:3000/dev e o swagger estará disponível em http://localhost:3000/dev/api
