@@ -28,7 +28,7 @@ export class UserService {
    * @method isValid
    * @description Valida se os dados do usuário estão corretos
    */
-  isValidUser(userData: UserDto) {
+  private isValidUser(userData: UserDto) {
     return (
       userData.name && userData.username && userData.email && userData.password
     );
