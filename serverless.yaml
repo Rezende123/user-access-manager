@@ -1,0 +1,31 @@
+service:
+  name: user-access-manager
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-plugin-optimize
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  
+custom:
+  optimize:
+    external: ['swagger-ui-dist']
+
+package:
+  include:
+    - src/**
+    - public/**
+    - views/**
+  individually: true
+
+functions:
+  main:
+    handler: src/lambda.handler
+    events:
+      - http:
+          method: any
+          path: /{any+}
