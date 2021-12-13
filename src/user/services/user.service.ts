@@ -68,9 +68,16 @@ export class UserService {
    * @returns O documento do usuário salvo
    */
   async getById(id: string): Promise<UserReturnAdapter> {
-    const user = await this.userModel.findById(id);
+    try {
+      const user = await this.userModel.findById(id);
 
-    return new UserReturnAdapter(user);
+      return new UserReturnAdapter(user);
+    } catch (error) {
+      throw new HttpException(
+        `Não foi possível encontrar um usuário com o ID: ${id}`,
+        HttpStatus.NOT_FOUND,
+      );
+    }
   }
 
   /**
@@ -79,8 +86,15 @@ export class UserService {
    * @returns O documento do usuário salvo
    */
   async getOne(where: QueryUserDto): Promise<UserReturnAdapter> {
-    const user = await this.userModel.findOne(where);
+    try {
+      const user = await this.userModel.findOne(where);
 
-    return new UserReturnAdapter(user);
+      return new UserReturnAdapter(user);
+    } catch (error) {
+      throw new HttpException(
+        'Não foi possível encontrar um usuário com estes requisitos',
+        HttpStatus.NOT_FOUND,
+      );
+    }
   }
 }
