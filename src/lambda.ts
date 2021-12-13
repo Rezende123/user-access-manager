@@ -10,6 +10,8 @@ import {
 } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
 import * as express from 'express';
+import { join } from 'path';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 const binaryMimeTypes: string[] = [];
 
@@ -34,6 +36,20 @@ async function bootstrapServer(): Promise<Server> {
     );
     nestApp.use(eventContext());
 
+    const config = new DocumentBuilder()
+      .setTitle('Gerenciador de acesso do usuário')
+      .setDescription(
+        'Esta API cuida do cadastro de usuários e da quantidade de acessos ao sistema.',
+      )
+      .setVersion('1.0')
+      .build();
+    const document = SwaggerModule.createDocument(nestApp, config);
+    SwaggerModule.setup('api', nestApp, document);
+
+    nestApp.setBaseViewsDir(join(__dirname, '..', 'views'));
+    nestApp.useStaticAssets(join(__dirname, '..', 'public'));
+    nestApp.setViewEngine('hbs');
+
     await nestApp.init();
     cachedServer = createServer(expressApp, undefined, binaryMimeTypes);
   }
@@ -41,6 +57,14 @@ async function bootstrapServer(): Promise<Server> {
 }
 
 export const handler: Handler = async (event: any, context: Context) => {
+  if (event.path === '/api') {
+    event.path = '/api/';
+  }
+
+  event.path = event.path.includes('swagger-ui')
+    ? `/api${event.path}`
+    : event.path;
+
   cachedServer = await bootstrapServer();
 
   return proxy(cachedServer, event, context, 'PROMISE').promise;
