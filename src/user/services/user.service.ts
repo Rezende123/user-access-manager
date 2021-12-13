@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { UserReturnAdapter } from '../adapters/user-return.adapter';
@@ -25,17 +25,41 @@ export class UserService {
   }
 
   /**
+   * @method isValid
+   * @description Valida se os dados do usuário estão corretos
+   */
+  private isValidUser(userData: UserDto) {
+    return (
+      userData.name && userData.username && userData.email && userData.password
+    );
+  }
+
+  /**
    * @method create
    * @description Salva as informações do usuário no banco de dados
    * @returns O documento do usuário salvo
    */
   async create(userData: UserDto): Promise<UserReturnAdapter> {
+    if (!this.isValidUser(userData)) {
+      throw new HttpException(
+        'Dados inválidos para cadastrar usuário',
+        HttpStatus.PRECONDITION_REQUIRED,
+      );
+    }
     await this.encriptPassword(userData);
 
     const UserModelData = new this.userModel(userData);
-    const createdUser = await UserModelData.save();
 
-    return new UserReturnAdapter(createdUser);
+    try {
+      const createdUser = await UserModelData.save();
+
+      return new UserReturnAdapter(createdUser);
+    } catch (error) {
+      throw new HttpException(
+        'Não foi possível salvar o cadastro',
+        HttpStatus.SERVICE_UNAVAILABLE,
+      );
+    }
   }
 
   /**
@@ -44,9 +68,16 @@ export class UserService {
    * @returns O documento do usuário salvo
    */
   async getById(id: string): Promise<UserReturnAdapter> {
-    const user = await this.userModel.findById(id);
+    try {
+      const user = await this.userModel.findById(id);
 
-    return new UserReturnAdapter(user);
+      return new UserReturnAdapter(user);
+    } catch (error) {
+      throw new HttpException(
+        `Não foi possível encontrar um usuário com o ID: ${id}`,
+        HttpStatus.NOT_FOUND,
+      );
+    }
   }
 
   /**
@@ -55,8 +86,15 @@ export class UserService {
    * @returns O documento do usuário salvo
    */
   async getOne(where: QueryUserDto): Promise<UserReturnAdapter> {
-    const user = await this.userModel.findOne(where);
+    try {
+      const user = await this.userModel.findOne(where);
 
-    return new UserReturnAdapter(user);
+      return new UserReturnAdapter(user);
+    } catch (error) {
+      throw new HttpException(
+        'Não foi possível encontrar um usuário com estes requisitos',
+        HttpStatus.NOT_FOUND,
+      );
+    }
   }
 }
