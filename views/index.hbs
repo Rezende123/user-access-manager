@@ -37,7 +37,7 @@
         padding: 30px;
       }
 
-      img {
+      picture {
         filter: grayscale(1);
       }
       
@@ -53,11 +53,16 @@
   </head>
   <body>
     <div class="content">
-      <img src="/road-api.gif" alt="https://giphy.com/stickers/transparent-microduino-tVhJw24Gv8FGGlnjDN"/>
+      <picture>
+        <source srcset="https://drive.google.com/uc?export=view&id=1WD2TEKByeOrEa4PPsGTEb-J6HJdxmxWE"
+          alt="https://giphy.com/stickers/transparent-microduino-tVhJw24Gv8FGGlnjDN">
+        <img src="/road-api.gif"
+          alt="https://giphy.com/stickers/transparent-microduino-tVhJw24Gv8FGGlnjDN">
+      </picture>
       <p>
         {{ message }}
       </p>
-      <a href="/api">
+      <a href="api">
       <button>Veja a documentação</button>
       </a>
     </div>
