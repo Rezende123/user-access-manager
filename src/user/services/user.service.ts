@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { UserReturnAdapter } from '../adapters/user-return.adapter';
@@ -25,11 +25,27 @@ export class UserService {
   }
 
   /**
+   * @method isValid
+   * @description Valida se os dados do usuário estão corretos
+   */
+  isValidUser(userData: UserDto) {
+    return (
+      userData.name && userData.username && userData.email && userData.password
+    );
+  }
+
+  /**
    * @method create
    * @description Salva as informações do usuário no banco de dados
    * @returns O documento do usuário salvo
    */
   async create(userData: UserDto): Promise<UserReturnAdapter> {
+    if (!this.isValidUser(userData)) {
+      throw new HttpException(
+        'Dados inválidos para cadastrar usuário',
+        HttpStatus.PRECONDITION_REQUIRED,
+      );
+    }
     await this.encriptPassword(userData);
 
     const UserModelData = new this.userModel(userData);
